@@ -37,7 +37,7 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 <p align="center">
 <img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/confusion_table1.png"
   alt="Size Limit comment in pull request about bundle size changes"
-  width="200" height="200">
+  width="400" height="200">
 </p>
 
 
@@ -46,7 +46,7 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 <p align="center">
 <img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/confusion_table2.png"
   alt="Size Limit comment in pull request about bundle size changes"
-  width="200" height="200">
+  width="400" height="200">
 </p>
 
 
@@ -55,5 +55,5 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 <p align="center">
 <img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/forecasting_importance.png"
   alt="Size Limit comment in pull request about bundle size changes"
-  width="200" height="200">
+  width="400" height="200">
 </p>
