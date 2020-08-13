@@ -52,16 +52,13 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
    
    
    
-   ## Table of Contents
+## Table of Contents
 
-# Size Limit [![Cult Of Martians][cult-img]][cult]
-
-<img src=""https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/confusion_table1.png" align="right"
-     alt="Size Limit logo by Anton Lovchikov" width="120" height="178">
-
-Size Limit is a performance budget tool for JavaScript. It checks every commit
-on CI, calculates the real cost of your JS for end-users and throws an error
-if the cost exceeds the limit.
+<p align="center">
+<img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/confusion_table1.png"
+  alt="Size Limit comment in pull request about bundle size changes"
+  width="686" height="289">
+</p>
 
 * **ES modules** and **tree-shaking** support.
 * Add Size Limit to **Travis CI**, **Circle CI**, **GitHub Actions**
