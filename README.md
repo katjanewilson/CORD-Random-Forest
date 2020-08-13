@@ -17,25 +17,18 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 
 ## Data
 
-* [CORD research data set](https://github.com/mobxjs/mobx)
-* [Material-UI](https://github.com/callemall/material-ui)
+* [CORD research data set](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)
 
 ## Packages
 
-* [Random Forest](https://github.com/mobxjs/mobx)
-* [Material-UI](https://github.com/callemall/material-ui)
+* [Random Forest](https://cran.r-project.org/web/packages/randomForest/randomForest.pdf)
 
 
 ## How It Works
 
 1. Step1
 2. Step 2
-3. The `webpack` plugin creates an empty webpack project, adds your library
-   and looks for the bundle size difference.
-4. The `time` plugin compares the current machine performance with that of
-   a low-priced Android devices to calculate the CPU throttling rate.
-5. Then the `time` plugin runs headless Chrome (or desktop Chrome if it’s
-   available) to track the time a browser takes to compile and execute your JS.
+3. Step 3
    
 
 
