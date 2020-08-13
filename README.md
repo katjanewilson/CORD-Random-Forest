@@ -15,23 +15,15 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 [cult-img]:      http://cultofmartians.com/assets/badges/badge.svg
 [cult]:          http://cultofmartians.com/tasks/size-limit-config.html
 
-## Who Uses Size Limit
+## Data
 
-* [MobX](https://github.com/mobxjs/mobx)
+* [CORD research data set](https://github.com/mobxjs/mobx)
 * [Material-UI](https://github.com/callemall/material-ui)
-* [Autoprefixer](https://github.com/postcss/autoprefixer)
-* [PostCSS](https://github.com/postcss/postcss) reduced
-  [25% of the size](https://github.com/postcss/postcss/commit/150edaa42f6d7ede73d8c72be9909f0a0f87a70f).
-* [Browserslist](https://github.com/ai/browserslist) reduced
-  [25% of the size](https://github.com/ai/browserslist/commit/640b62fa83a20897cae75298a9f2715642531623).
-* [EmojiMart](https://github.com/missive/emoji-mart) reduced
-  [20% of the size](https://github.com/missive/emoji-mart/pull/111)
-* [nanoid](https://github.com/ai/nanoid) reduced
-  [33% of the size](https://github.com/ai/nanoid/commit/036612e7d6cc5760313a8850a2751a5e95184eab).
-* [React Focus Lock](https://github.com/theKashey/react-focus-lock) reduced
-  [32% of the size](https://github.com/theKashey/react-focus-lock/pull/48).
-* [Logux](https://github.com/logux) reduced
-  [90% of the size](https://github.com/logux/logux-client/commit/62b258e20e1818b23ae39b9c4cd49e2495781e91).
+
+## Packages
+
+* [Random Forest](https://github.com/mobxjs/mobx)
+* [Material-UI](https://github.com/callemall/material-ui)
 
 
 ## How It Works
@@ -50,30 +42,6 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 5. Then the `time` plugin runs headless Chrome (or desktop Chrome if it’s
    available) to track the time a browser takes to compile and execute your JS.
    
-   
-   
-## Table of Contents
-
-<p align="center">
-<img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/confusion_table1.png"
-  alt="Size Limit comment in pull request about bundle size changes"
-  width="686" height="289">
-</p>
-
-* **ES modules** and **tree-shaking** support.
-* Add Size Limit to **Travis CI**, **Circle CI**, **GitHub Actions**
-  or another CI system to know if a pull request adds a massive dependency.
-* **Modular** to fit different use cases: big JS applications
-  that use their own bundler or small npm libraries with many files.
-* Can calculate **the time** it would take a browser
-  to download and **execute** your JS. Time is a much more accurate
-  and understandable metric compared to the size in bytes.
-* Calculations include **all dependencies and polyfills**
-  used in your JS.
-
-<p align="center">
-  <img src="./img/example.png" alt="Size Limit CLI" width="738">
-</p>
 
 With **[GitHub action]** Size Limit will post bundle size changes as a comment
 in pull request discussion.
