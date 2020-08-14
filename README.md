@@ -7,7 +7,7 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 <p align="center">
 <img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/covid.png"
   alt="Size Limit comment in pull request about bundle size changes"
-  width="686" height="289">
+  width="486" height="189">
 </p>
 
 
