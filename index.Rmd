@@ -14,14 +14,13 @@ output:
 
 ## Overview
 
+Course project for Stat 974 inspired by the COVID-19 Open Research Dataset Challenge
+
 ---
 
 
-<p>Central to the debate of ethical algorithm design is a consideration of mis-classification costs for supervised learning methods. By building in asymmetric costs through sampling, machine learning engineers can take heed of policy makers’ desired cost-ratios. This random forest algorithm takes asymmetric sampling into account when predicting death rates of coronavirus patients in South Korea using the Kaggle COVID-19 Open Research Dataset. </p>
 
-
-
-```{r, out.width=600, echo=F}
+```{r, out.width=400, echo=F}
 knitr::include_graphics("images/covid.png")
 ```
 
