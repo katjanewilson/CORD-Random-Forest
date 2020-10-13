@@ -1,6 +1,4 @@
-@settings {
-  font-size: 8;
-}
+
 
 # COVID-19 Prediction Tool
 
@@ -11,7 +9,7 @@ Central to the debate of ethical algorithm design is a consideration of mis-clas
 <p align="center">
 <img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/covid.png"
   alt="Size Limit comment in pull request about bundle size changes"
-  width="486" height="189">
+  width="300" height="100">
 </p>
 
 
@@ -55,20 +53,6 @@ correctly. The forecasting accuracy, on the other hand, depends on the cost rati
   width="400" height="200">
 </p>
 
-
-## Variable Importance Plots
-
-Figure 1.1 shows the contribution of variables to the single outcome class of death. When the province variable is shuffled, classification accuracy for a death declines by around 35% points. Age, source, and confirmed are less important. The average classification importance, as opposed to importance for just the outcome of death, is shown in Figure 1.2. These importance measures are smaller because they now include categories that have more cases (released and isolated). Although confirmed date is now more important according to the reshuffling, the average overall classification accuracy is of less interest than the importance based on a single outcome. Moving back to Figure 4.1 then, policy makers may note that the variable of Province strongly contributes to the forecasting skill of the algorithm in forecasting death. This insight may go against what is currently accepted in the research on COVID-19. Many policy makers focus on age as associated with death in infected patients, but these plots show that province is more important in forecasting deaths, at least for the sample at hand. Of course, the variable importance plot do not show how an input is related to the response. The functional form is not revealed, and policy makers should understand that these analyses to not explain why or how province is an important predictor of death, simply that it improves forecasting accuracy.
-
-<p align="center">
-<img src="https://github.com/katjanewilson/CORD-Random-Forest/blob/master/images/forecasting_importance.png"
-  alt="Size Limit comment in pull request about bundle size changes"
-  width="400" height="200">
-</p>
-
-
-## Partial Plots
-Unlike variable independence plots, the response functions in partial plots are made separately for each predictor and each outcome category. Partial plots demonstrate how each predictor is related to the response when the other predictors are held constant. Figure 2.1 is the partial response plot for the outcome of death and the predictor of age. Similar to the prevailing narrative and research, the plot confirms that chances of death increases with age, and policy makers, after converting these logits to probabilities, will find that age is strongly associated with death. The partial response plots for the released and isolated variables differ since only one outcome can occur at a time, though both show a similar downward trend with increasing age. Likewise, the partial plots picture in Figures 3.1-3.4 for the categorical variables, show the relationship between the input of categorical variables with the log odds of death. Policy makers might be interested in how death varies with a particular province, order, or source, and can likewise reframe these logit odds into probabilities to find out the association of the death outcome changes. For instance, the province of Deagu seems to be strongly associated with death, although policy makers are also advised to take sampling measures and the unrepresentative nature of the data into account if deciding to move on further with this evaluation.
 
 
 ## Margins
