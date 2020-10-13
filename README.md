@@ -1,4 +1,4 @@
-
+<p style="color:blue;font-size:18px;">This is demo text</p> 
 
 # COVID-19 Prediction Tool
 
