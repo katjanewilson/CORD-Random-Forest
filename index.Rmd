@@ -14,21 +14,14 @@ output:
 
 ## Overview
 
-Course project for Stat 974 inspired by the COVID-19 Open Research Dataset Challenge
+Simulation of assymetric loss in random forest algorithm, inspired by the COVID-19 Open Research Dataset Challenge
 
 ---
 
 
-
-```{r, out.width=400, echo=F}
-knitr::include_graphics("images/covid.png")
-```
-
 ## Background
 
-In December 2019, a strain of coronavirus broke out in Wuhan, China. Since then, COVID-19 has become a global pandemic, and nations small and large are struggling to adapt to the growing number of cases. Using open data collected from Kaggle, I develop a forecasting tool to be used at triage when new cases of COVID-19 arrive in the hospital. Because the benefits of one decision may be the costs of another, attention to forecasting accuracy and tradeoffs is given much attention.
-
-When COVID-19 patients arrive at a hospital, decisions on how to proceed are made by the emergency room attending physician. Doctors use expertise and clinical knowledge to gauge the severity of symptoms. Based on their recommendation, patients with more likelihood of dying will receive an ICU bed or a ventilator. Patients with less likelihood will be isolated, and patients with the least risk of dying will be sent home. With precious resources like materials and isolation space in hospitals, decisions carry a lot of weight. Doctors make these decisions sometimes without all of the variables that a predictive model would have the capacity to evaluate under time pressure. Might an algorithmic tool that processes the data available from accumulated COVID-19 data provide more accurate forecasts, and be used as a tool in conjunction with a doctor’s expertise?
+Using open data collected from Kaggle, I develop a forecasting tool to predict likelihood of COVID deaths, and use the tool to demonstrate how changes in sampling affect assymetric loss.
 
 ## Data
 Open data on Kaggle includes over 2000 observations of individuals in South Korea who attended the hospital for COVID-19 from late 2019 to early 2020.
@@ -97,7 +90,7 @@ concern in releasing a patient who is the most risk of death, and hoped to make 
 rf <- randomForest(outcome~Sex + Age + Province + Source +
                      Order, data=coronavirus_data,
                    importance = TRUE,
-                   sampsize = c(21,12,26))
+                   sampsize = c(21,12,26)) #example of asymmetric sampling
 print(rf)
 ```
 
@@ -184,11 +177,10 @@ kable(dataframe, escape = FALSE, caption = "Algorithm's forecasting accuracy imp
 
 ## Variable Importance Plots
 
-Figure 1.1 shows the contribution of variables to the single outcome class of death. When the province variable is shuffled, classification accuracy for a death declines by around 35% points. Age, source, and confirmed are less important. The average classification importance, as opposed to importance for just the outcome of death, is shown in Figure 1.2. These importance measures are smaller because they now include categories that have more cases (released and isolated). Although confirmed date is now more important according to the reshuffling, the average overall classification accuracy is of less interest than the importance based on a single outcome. Moving back to Figure 4.1 then, policy makers may note that the variable of Province strongly contributes to the forecasting skill of the algorithm in forecasting death. This insight may go against what is currently accepted in the research on COVID-19. Many policy makers focus on age as associated with death in infected patients, but these plots show that province is more important in forecasting deaths, at least for the sample at hand. Of course, the variable importance plot does not show how an input is related to the response. The functional form is not revealed, and policy makers should understand that these analyses to not explain why or how province is an important predictor of death, simply that it improves forecasting accuracy.
+We can assess the contribution of variables to the single outcome class of death. When the variable of Province is shuffled, classification accuracy for a death declines by around 35% points. Age, source, and confirmed are less important. However, such importance measures are smaller because they now include categories that have more cases (released and isolated). Although confirmed date is now more important according to the reshuffling, the average overall classification accuracy is of less interest than the importance based on a single outcome. Policy makers might note that the variable of Province strongly contributes to the forecasting skill of the algorithm in forecasting death. This insight may go against what is currently accepted in the research on COVID-19. Many policy makers focus on age as associated with death in infected patients, but these plots show that province is more important in forecasting deaths, at least for the sample at hand. Of course, the variable importance plot does not show how an input is related to the response. The functional form is not revealed, and policy makers should understand that these analyses to not explain why or how province is an important predictor of death, simply that it improves forecasting accuracy.
 
 ### Sample Code
 ```{r eval=FALSE, include=TRUE, echo = TRUE}
-
 ###variable importance plots
 par(mfrow = c(2,2))
 
@@ -196,10 +188,6 @@ varImpPlot(rf, class = 1, type = 1, scale = FALSE,
            main = "Fig 1.1: Forecasting Importance Plot for Deceased")
 varImpPlot(rf, type = 1, scale = FALSE, 
            main = "Fig 1.2: Forecasting Importance Plot Averaged for All")
-varImpPlot(rf, class = 2, type = 1, scale = FALSE, 
-           main = "Fig 1.3: Forecasting Importance Plot for Released")
-varImpPlot(rf, class = 3, type = 1, scale = FALSE, 
-           main = "Fig 1.4: Forecasting Importance Plot for Isolated")
 ```
 
 
@@ -210,44 +198,16 @@ Unlike variable independence plots, the response functions in partial plots are 
 ```{r eval=FALSE, include=TRUE, echo = TRUE}
 part1<- partialPlot(rf, pred.data = coronavirus_data, x.var = "Age",
                     rug = T, which.class = 1)
-part2<- partialPlot(rf, pred.data = coronavirus_data, x.var = "Age",
-                    rug = T, which.class = 2)
-part3<- partialPlot(rf, pred.data = coronavirus_data, x.var = "Age",
-                    rug = T, which.class = 3)
 par(mfrow = c(2,2))
-
 #tranform the logs back to probablity
 scatter.smooth(part1$x, part1$y, xlab = "Age",
                ylab = "Centered Log Odds of Death", main = "Fig 2.1: Partial Dependence Plot for Death on Age")
-##how the other plots change based on outcome
-scatter.smooth(part2$x, part2$y, xlab = "Age",
-               ylab = "Centered Log Odds of Released", main = "Fig 2.2: Partial Dependence Plot for Released on Age")
-scatter.smooth(part3$x, part3$y, xlab = "Age",
-               ylab = "Centered Log Odds of Isolated", main = "Fig 2.3: Partial Dependence Plot for Isolated on Age")
 
 par(mfrow = c(2,2))
 part2 <- partialPlot(rf, pred.data = coronavirus_data,
                      x.var = Sex, reg = T, prob = T,which.class = 1 ,
                      main = "Fig 3.1: Partial Dependence Plot for Death on Sex",
                      xlab = "Sex", ylab = "Centered Log Odds of Death")
-part2
-part2 <- partialPlot(rf, pred.data = coronavirus_data,
-                     x.var = Order, reg = T, prob = T,which.class = 1 ,
-                     main = "Fig 3.2: Partial Dependence Plot for Death on Order",
-                     xlab = "Order", ylab = "Centered Log Odds of Death")
-part2
-part2 <- partialPlot(rf, pred.data = coronavirus_data,
-                     x.var = Province, reg = T, prob = T,which.class = 1 ,
-                     main = "Fig 3.3: Partial Dependence Plot for Death on Province",
-                     xlab = "Province", ylab = "Centered Log Odds of Death")
-part2
-part2 <- partialPlot(rf, pred.data = coronavirus_data,
-                     x.var = Source, reg = T, prob = T,which.class = 1 ,
-                     main = "Fig 3.4: Partial Dependence Plot for Death on Source",
-                     xlab = "Source", ylab = "Centered Log Odds of Death")
-part2
-table(coronavirus_data$Source, coronavirus_data$State3)
-
 ```
 
 ## Margins
