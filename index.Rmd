@@ -1,16 +1,18 @@
 ---
-title: ''
+title: ""
 output:
   html_document:
     toc: no
     toc_float: yes
     collapsed: no
     number_sections: no
-    toc_depth: 4
+    toc_depth: 3
+    css: front.css
   pdf_document:
     toc: yes
     toc_depth: '4'
 ---
+
 
 ## CORD Random Forest {.tabset}
 
